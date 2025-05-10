@@ -39,7 +39,7 @@ Firewall_Bypass_Detection/
 ⚙️ Installation
 
 1. Clone the Repository:
-   git clone https://github.com/Rajavarman-GR/Firewall-Bypass-Detection-
+   git clone https://github.com/Rajavarman-GR/Firewall-Bypass-Detection
    cd firewall-bypass-detection
 
 2. Install Requirements:
