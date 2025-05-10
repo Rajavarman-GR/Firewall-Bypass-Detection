@@ -39,7 +39,7 @@ Firewall_Bypass_Detection/
 ⚙️ Installation
 
 1. Clone the Repository:
-   git clone https://github.com/yourusername/firewall-bypass-detection.git
+   git clone https://github.com/Rajavarman-GR/Firewall-Bypass-Detection-
    cd firewall-bypass-detection
 
 2. Install Requirements:
@@ -93,9 +93,9 @@ Protect your dashboard by enabling basic Flask login (see server.py snippet in d
 
 🧠 Authors
 
-Your Name – Project Developer & UI Designer
-LinkedIn: https://linkedin.com/in/yourprofile
-GitHub: https://github.com/yourusername
+Rajavarman – Project Developer & UI Designer
+LinkedIn: https://linkedin.com/in/rajavarman-g-r
+GitHub: https://github.com/Rajavarman-GR
 
 ------------------------
 
