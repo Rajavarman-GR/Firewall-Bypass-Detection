@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Firewall Bypass Detection Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🔥 Firewall Bypass Detection System 🔥</h1>
+
+        <!-- 🛡️ GIF Animation Section -->
+        <div class="firewall-gif">
+            <img src="{{ url_for('static', filename='firewall_anim.gif') }}" alt="Firewall Animation" width="300">
+        </div>
+
+        <button onclick="simulateAttack()">🚨 Simulate Attack</button>
+        <div id="status"></div>
+
+        <h2>📈 Threats by Country</h2>
+        <img id="graph" src="{{ url_for('static', filename='logs/threats_graph.png') }}" alt="Threats Graph">
+
+        <h2>🧾 Real-Time Threat Logs</h2>
+        <div id="logs"></div>
+    </div>
+
+    <script>
+        function simulateAttack() {
+            fetch("/simulate_attack", { method: "POST" })
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById("status").innerText = data.message;
+                    updateLogs();
+                    updateGraph();
+                });
+        }
+
+        function updateLogs() {
+            fetch("/get_logs")
+                .then(res => res.json())
+                .then(data => {
+                    const logDiv = document.getElementById("logs");
+                    logDiv.innerHTML = "";
+                    data.forEach(entry => {
+                        const item = document.createElement("p");
+                        item.innerText = `[${entry.Time}] ${entry.IP} (${entry.Country}) - ${entry["Threat Type"]}`;
+                        logDiv.appendChild(item);
+                    });
+                });
+        }
+
+        function updateGraph() {
+            fetch("/update_graph")
+                .then(() => {
+                    const img = document.getElementById("graph");
+                    img.src = `/static/logs/threats_graph.png?${Date.now()}`;
+                });
+        }
+
+        setInterval(updateLogs, 5000);
+    </script>
+</body>
+</html>
